@@ -41,7 +41,7 @@ async function showModel() {
 
   const loader = new GLTFLoader();
   loader.load(
-    '/MutantWaving.glb',
+    `${import.meta.env.BASE_URL}MutantWaving.glb`,
     function (gltf) {
       scene.add(gltf.scene);
 
