@@ -4,13 +4,13 @@ const container = document.getElementById('demo')!;
 if (/android/i.test(navigator.userAgent)) {
   container.innerHTML = `
     <a href="intent://arvr.google.com/scene-viewer/1.0?file=https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Avocado/glTF/Avocado.gltf#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=https://developers.google.com/ar;end;">
-      <img src="/thumbnail.png" />
+      <img src="./thumbnail.png" />
     </a>
   `;
 } else if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
   container.innerHTML = `
-    <a rel="ar" href="/MutantWaving.usdz">
-      <img src="/thumbnail.png" />
+    <a rel="ar" href="./MutantWaving.usdz">
+      <img src="./thumbnail.png" />
     </a>`;
 } else {
   showModel();
