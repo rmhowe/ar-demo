@@ -4,4 +4,7 @@ export default {
   build: {
     outDir: 'docs',
   },
+  server: {
+    host: true,
+  },
 };
