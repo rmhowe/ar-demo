@@ -1,19 +1,28 @@
 import './style.css';
 
+const showButton = window.location.href.includes('#show-button');
 const container = document.getElementById('demo')!;
 if (/android/i.test(navigator.userAgent)) {
   container.innerHTML = `
-    <a style="visibility: hidden;" id="ar-link" href="intent://arvr.google.com/scene-viewer/1.0?file=https://rmhowe.github.io/ar-demo/MutantWaving.glb&mode=ar_preferred#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=https://developers.google.com/ar;end;">
+    <a ${
+      showButton ? '' : 'style="visibility: hidden;"'
+    } id="ar-link" href="intent://arvr.google.com/scene-viewer/1.0?file=https://rmhowe.github.io/ar-demo/MutantWaving.glb&mode=ar_preferred#Intent;scheme=https;package=com.google.android.googlequicksearchbox;action=android.intent.action.VIEW;S.browser_fallback_url=https://developers.google.com/ar;end;">
       <img src="./thumbnail.png" />
     </a>
   `;
-  document.getElementById('ar-link')?.click();
+  if (!showButton) {
+    document.getElementById('ar-link')?.click();
+  }
 } else if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
   container.innerHTML = `
-    <a id="ar-link" rel="ar" href="./MutantWaving.usdz" style="visibility: hidden;">
+    <a ${
+      showButton ? '' : 'style="visibility: hidden;"'
+    } id="ar-link" rel="ar" href="./MutantWaving.usdz">
       <img src="./thumbnail.png" />
     </a>`;
-  document.getElementById('ar-link')?.click();
+  if (!showButton) {
+    document.getElementById('ar-link')?.click();
+  }
 } else {
   showModel();
 }
